@@ -1,80 +1,96 @@
-# Système de Détection de Visage (Haar Cascade)
+# Face Detection System (Haar Cascade)
 
-Ce projet implémente un système de détection de visage en temps réel utilisant l'algorithme de Viola-Jones (Haar Cascade). Il offre à la fois une interface en ligne de commande (CLI) polyvalente et une application web moderne pour détecter des visages via webcam, images ou vidéos.
+This project implements a real-time face detection system using the Viola-Jones algorithm (Haar Cascade). It offers both a versatile command-line interface (CLI) and a modern web application for detecting faces via webcam, images, or videos.
 
-## 🚀 Fonctionnalités
+## 🚀 Features
 
-- **Détection en Temps Réel** : Utilisation de la webcam pour détecter les visages instantanément.
-- **Traitement d'Images** : Téléchargement et détection de visages sur des fichiers images (JPG, PNG).
-- **Traitement de Vidéos** : Analyse de fichiers vidéo avec suivi des visages image par image.
-- **Interface Web** : Une interface utilisateur intuitive construite avec FastAPI.
-- **Paramètres Configurables** : Ajustement facile du facteur d'échelle et du nombre de voisins minimes pour optimiser la détection.
+- **Real-Time Detection**: Uses the webcam to detect faces instantly.
 
-## 🛠️ Technologies Utilisées
+- **Image Processing**: Downloads and detects faces from image files (JPG, PNG).
 
-Ce projet a été réalisé avec les technologies suivantes :
+- **Video Processing**: Analyzes video files with frame-by-frame face tracking.
 
-- **Python** : Langage de programmation principal.
-- **OpenCV (cv2)** : Bibliothèque puissante pour le traitement d'images et la vision par ordinateur.
-- **FastAPI** : Framework web moderne et rapide pour la création de l'API et de l'interface web.
-- **NumPy** : Calcul scientifique et manipulation de matrices pour le traitement des images.
-- **Haar Cascade Classifiers** : Modèles pré-entraînés pour la détection d'objets (visages).
-- **JavaScript/HTML/CSS** : Pour la partie frontend de l'interface web.
+- **Web Interface**: An intuitive user interface built with FastAPI.
 
-## 🎓 Ce que j'ai appris
+- **Configurable Parameters**: Easily adjust the scaling factor and minimum neighbors count to optimize detection.
 
-En réalisant ce projet, j'ai acquis et renforcé mes compétences en :
+## 🛠️ Technologies Used
 
-- **Vision par Ordinateur** : Compréhension de l'algorithme de Viola-Jones et manipulation de flux vidéo et d'images avec OpenCV.
-- **Développement Backend** : Création d'API RESTful et de WebSockets avec FastAPI pour la communication temps réel.
-- **Intégration** : Connexion entre le traitement d'images backend et une interface utilisateur frontend.
-- **Gestion de Projet** : Organisation du code en modules réutilisables (`face_detector.py`, `app.py`).
+This project was developed using the following technologies:
 
-## 💻 Comment lancer le projet
+- **Python**: Primary programming language.
 
-### Prérequis
+- **OpenCV (cv2)**: Powerful library for image processing and computer vision.
 
-Assurez-vous d'avoir Python installé. Installez ensuite les dépendances nécessaires :
+- **FastAPI**: Modern and fast web framework for creating the API and web interface.
+
+- **NumPy**: Scientific computing and matrix manipulation for image processing.
+
+- **HAAR Cascade Classifiers**: Pre-trained models for object (face) detection.
+
+- **JavaScript/HTML/CSS**: For the frontend of the web interface.
+
+## 🎓 What I Learned
+
+Through this project, I acquired and strengthened my skills in:
+
+- **Computer Vision**: Understanding the Viola-Jones algorithm and manipulating video and image streams with OpenCV.
+
+- **Backend Development**: Creating RESTful APIs and WebSockets with FastAPI for real-time communication.
+
+- **Integration**: Connecting backend image processing to a frontend user interface.
+
+- **Project Management**: Organizing code into reusable modules (`face_detector.py`, `app.py`).
+
+## 💻 How to Launch the Project
+
+### Prerequisites
+
+Make sure you have Python installed. Next, install the necessary dependencies:
 
 ```bash
 pip install opencv-python-headless numpy fastapi uvicorn python-multipart
-# Note: Si vous utilisez la webcam en local, utilisez `opencv-python` au lieu de `headless`
+# Note: If you are using the webcam locally, use `opencv-python` instead of `headless`
 pip install opencv-python numpy fastapi uvicorn python-multipart
 ```
 
-### Méthode 1 : Interface Web (Recommandé)
+### Method 1: Web Interface (Recommended)
 
-1.  Lancez le serveur web :
-    ```bash
-    python app.py
-    ```
-2.  Ouvrez votre navigateur à l'adresse indiquée (généralement `http://localhost:8000`).
+1. Start the web server:
 
-### Méthode 2 : Ligne de Commande (CLI)
+```bash
+python app.py
 
-Vous pouvez utiliser le script `face_detector.py` directement :
+```
+2. Open your browser to the address provided (usually `http://localhost:8000`).
 
-**Pour la webcam :**
+### Method 2: Command Line (CLI)
+
+You can use the `face_detector.py` script directly:
+
+**For a webcam:**
 ```bash
 python face_detector.py --source webcam
 ```
 
-**Pour une image :**
+**For an image:**
 ```bash
-python face_detector.py --source image --path chemin/vers/image.jpg --save
+python face_detector.py --source image --path path/to/image.jpg --save
 ```
 
-**Pour une vidéo :**
+**For a video:**
 ```bash
-python face_detector.py --source video --path chemin/vers/video.mp4 --save
+python face_detector.py --source video --path path/to/video.mp4 --save
 ```
 
-**Options supplémentaires :**
-- `--save` : Sauvegarde le résultat (image ou vidéo) dans le dossier `output`.
-- `--scale-factor 1.2` : Ajuste la sensibilité (1.1 par défaut).
-- `--min-neighbors 6` : Ajuste la précision (5 par défaut).
+**Additional options:**
+- `--save`: Saves the result (image or video) to the `output` folder.
 
-## 👤 Auteur
+- `--scale-factor 1.2`: Adjusts the sensitivity (1.1 by default).
+
+- `--min-neighbors 6`: Adjusts the precision (5 by default).
+
+## 👤 Author
 
 **Khadija Oualouane**
 [GitHub Profile](https://github.com/OualouaneKhadija)
