@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Detection System</title>
+    <meta name="description" content="Face detection using Viola-Jones Algorithm and Haar Cascades">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Face Detection System</h1>
+            <p class="subtitle">Haar Cascade • Viola-Jones Algorithm</p>
+        </header>
+
+        <!-- Mode Selection -->
+        <div class="mode-tabs">
+            <button class="tab active" data-mode="webcam">Webcam</button>
+            <button class="tab" data-mode="image">Image</button>
+            <button class="tab" data-mode="video">Video</button>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Detection Area -->
+            <div class="detection-area">
+                <!-- Welcome State -->
+                <div class="welcome-state" id="welcomeState">
+                    <div class="welcome-icon">👤</div>
+                    <h2>Ready to Detect Faces</h2>
+                    <p>Select a mode above or click the button below</p>
+                    <button class="btn btn-primary" id="startBtn">Start Webcam</button>
+                </div>
+
+                <!-- Video/Webcam Display -->
+                <video id="videoElement" autoplay playsinline></video>
+
+                <!-- Canvas for drawing -->
+                <canvas id="detectionCanvas"></canvas>
+
+                <!-- Result Image -->
+                <img id="resultImage" alt="Detection Result">
+
+                <!-- Loading State -->
+                <div class="loading-state" id="loadingState">
+                    <div class="spinner"></div>
+                    <p>Processing...</p>
+                </div>
+
+                <!-- Drop Zone -->
+                <div class="drop-zone" id="dropZone">
+                    <p>Drop your file here</p>
+                </div>
+            </div>
+
+            <!-- Controls Panel -->
+            <aside class="controls-panel">
+                <h3>Detection Parameters</h3>
+
+                <div class="control-group">
+                    <label>
+                        Scale Factor: <span id="scaleFactorValue">1.1</span>
+                    </label>
+                    <input type="range" id="scaleFactor" min="1.01" max="1.5" step="0.01" value="1.1">
+                    <small>Lower = more accurate, slower</small>
+                </div>
+
+                <div class="control-group">
+                    <label>
+                        Min Neighbors: <span id="minNeighborsValue">5</span>
+                    </label>
+                    <input type="range" id="minNeighbors" min="1" max="10" step="1" value="5">
+                    <small>Higher = fewer false positives</small>
+                </div>
+
+                <hr>
+
+                <h3>Statistics</h3>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-value" id="faceCount">0</span>
+                        <span class="stat-label">Faces</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="fps">0</span>
+                        <span class="stat-label">FPS</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="detectionTime">0</span>
+                        <span class="stat-label">ms</span>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h3>Actions</h3>
+                <button class="btn btn-primary" id="actionBtn">Start Detection</button>
+                <button class="btn btn-secondary" id="uploadBtn" style="display: none;">Upload File</button>
+                <input type="file" id="fileInput" accept="image/*,video/*" hidden>
+
+                <hr>
+
+                <h3>Settings</h3>
+                <div class="control-group">
+                    <label>Box Color:</label>
+                    <div class="color-options">
+                        <button class="color-btn active" data-color="#22c55e" style="background: #22c55e"></button>
+                        <button class="color-btn" data-color="#3b82f6" style="background: #3b82f6"></button>
+                        <button class="color-btn" data-color="#f59e0b" style="background: #f59e0b"></button>
+                        <button class="color-btn" data-color="#ef4444" style="background: #ef4444"></button>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Box Thickness: <span id="boxThicknessValue">2px</span></label>
+                    <input type="range" id="boxThickness" min="1" max="5" value="2">
+                </div>
+            </aside>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by OpenCV • Haar Cascade Classifier • Viola-Jones Algorithm</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
